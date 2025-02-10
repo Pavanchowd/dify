@@ -1,26 +1,16 @@
 import React from "react";
-import { motion } from "framer-motion";
-import "./Modal.css";
+import "./Modal.css"; // Add appropriate styles for your modal
 
-const Modal = ({ message, closeModal }) => {
+function Modal({ message, closeModal, success }) {
   return (
-    <motion.div
-      className="modal-container"
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 0.8, opacity: 0 }}
-      transition={{ duration: 0.3 }}
-    >
-      <div className="modal-overlay">
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h2>{message}</h2>
-            <button onClick={closeModal}>Close</button>
-          </div>
-        </div>
+    <div className="modal-overlay">
+      <div className="modal-content">
+        {success && <span className="checkmark">✔️</span>}
+        <h2> Account created successfully</h2>
+        <button onClick={closeModal}>Close</button>
       </div>
-    </motion.div>
+    </div>
   );
-};
+}
 
 export default Modal;
